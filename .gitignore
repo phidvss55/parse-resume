@@ -38,6 +38,7 @@ package-lock.json
 
 uploads
 files
+tests
 
 .idea
 .vscode
@@ -45,3 +46,5 @@ files
 # lock
 yarn.lock
 package-lock.json
+
+jest.config.js

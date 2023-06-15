@@ -76,9 +76,7 @@ function parse(PreparedFile, cbReturnResume) {
     fs.mkdirSync(parsed_path);
   }
   parsed_path = parsed_path + "/" + PreparedFile.name + ".txt";
-  fs.writeFile(parsed_path, rawFileData, { flag: "a+" }, (err) =>
-    console.log("err", err)
-  );
+  fs.writeFile(parsed_path, rawFileData, { flag: "a+" }, (err) => {});
 
   // 1 parse regulars
   parseDictionaryRegular(rawFileData, resumeObj);
@@ -182,7 +180,7 @@ function parseDictionaryTitles(Resume, rows, rowIdx) {
   let searchExpression = "";
   let ruleExpression: any;
   let isRuleFound: any;
-  let result;
+  let result: any;
 
   const row = rows[rowIdx];
 
