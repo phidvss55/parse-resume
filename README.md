@@ -4,12 +4,12 @@ A package that using to parse the data from pdf of resume to json or file
 
 ## Installation
 
-`npm install resume-parser-lib --save`
+`npm install parse-resume --save`
 
 ## Usage
 
 ```
-const ResumeParser = require('resume-parser-lib');
+const ResumeParser = require('parse-resume');
 
 // From file
 const resume = new ResumeParser("./files/resume.doc");
