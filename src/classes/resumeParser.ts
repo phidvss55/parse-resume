@@ -17,6 +17,7 @@ class ResumeParser {
     ) {
       this.type = "url";
       this.path = fileObj;
+      this.file = null;
     } else {
       this.type = "file";
       this.file = fileObj;
@@ -32,13 +33,17 @@ class ResumeParser {
         return resolve(this.data);
       }
 
-      parseIt.parseToJSON(this.file, this.type, (file, error) => {
-        if (error) {
-          return reject(error);
+      parseIt.parseToJSON(
+        this.file || this.path,
+        this.type,
+        (file: any, error: any) => {
+          if (error) {
+            return reject(error);
+          }
+          this.data = file;
+          return resolve(file);
         }
-        this.data = file;
-        return resolve(file);
-      });
+      );
     });
   }
 
@@ -48,13 +53,18 @@ class ResumeParser {
         reject("Missing ouput path");
       }
 
-      parseIt.parseToFile(this.file, this.type, outputPath, (file, error) => {
-        if (error) {
-          return reject(error);
+      parseIt.parseToFile(
+        this.file || this.path,
+        this.type,
+        outputPath,
+        (file: any, error: any) => {
+          if (error) {
+            return reject(error);
+          }
+          this.data = file;
+          return resolve(file);
         }
-        this.data = file;
-        return resolve(file);
-      });
+      );
     });
   }
 }

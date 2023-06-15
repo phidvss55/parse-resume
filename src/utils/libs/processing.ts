@@ -116,6 +116,10 @@ function PreparedFile(file: any, raw: any) {
   this.mime = mime.getType(file);
   this.ext = mime.getExtension(this.mime);
   this.raw = raw;
+  let pathStr = file;
+  if (typeof file !== "string") {
+    pathStr = file.path;
+  }
   this.name = path.basename(file.path);
 }
 
@@ -141,7 +145,6 @@ PreparedFile.prototype.saveResume = function (path, cbSavedResume) {
 
   if (fs.statSync(parsed_path).isDirectory() && this.resume) {
     const storedPath = parsed_path + "/" + this.name + ".json";
-    console.log("this.resume", this.resume);
     fs.writeFile(storedPath, this.resume.jsoned(), cbSavedResume);
   }
 };

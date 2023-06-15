@@ -1,6 +1,6 @@
 {
   "name": "parse-resume",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A package that using to parse the data from pdf of resume to json or file",
   "keywords": [],
   "author": "Tao",
